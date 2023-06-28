@@ -8,11 +8,9 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 
-//		char p1 = 'X';
-//		char p2 = 'O';
 		char turn;
 		int position;
-		Boolean game = true;
+		Boolean isGameOver = false;
 		
 		//gameBoard' Design
 		char[][] gameBoard = {
@@ -28,13 +26,14 @@ public class Program {
 			System.out.print("Select who will play first: ");
 			turn = sc.next().charAt(0);
 			
-			while(game) {
+			//TODO fix the bug that its ever the same player
+			while(!isGameOver) {
 				printGameBoard(gameBoard);
 				System.out.println(turn + " select a position: (1-9)");
 				position = sc.nextInt();
 				position(position, gameBoard, turn);
 				printGameBoard(gameBoard);
-				game = false;
+				isGameOver = isGameOver(turn, gameBoard);
 			}
 			
 			sc.close();
@@ -56,6 +55,14 @@ public class Program {
 			turn = 'X';
 		}
 		System.out.println("Turn: " + turn);
+	}
+	//TODO finish this method
+	//Verify if game is over or not
+	public static boolean isGameOver(char turn, char[][] gb) {
+		if (gb[0][0] == turn && gb[0][2] == turn && gb[0][4] == turn) {
+			return true;
+		}
+		return false;
 	}
 
 	public static void position(int pos, char[][] gb, char turn) {

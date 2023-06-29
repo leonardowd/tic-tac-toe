@@ -33,6 +33,7 @@ public class Program {
 				position = sc.nextInt();
 				position(position, gameBoard, turn);
 				printGameBoard(gameBoard);
+				System.out.println("==========");
 				isGameOver = isGameOver(turn, gameBoard);
 			}
 			
@@ -59,7 +60,14 @@ public class Program {
 	//TODO finish this method
 	//Verify if game is over or not
 	public static boolean isGameOver(char turn, char[][] gb) {
-		if (gb[0][0] == turn && gb[0][2] == turn && gb[0][4] == turn) {
+		if (gb[0][0] == turn && gb[0][2] == turn && gb[0][4] == turn
+				|| gb[2][0] == turn && gb[2][2] == turn && gb[2][4] == turn
+				|| gb[4][0] == turn && gb[4][2] == turn && gb[4][4] == turn
+				|| gb[0][0] == turn && gb[2][0] == turn && gb[4][0] == turn
+				|| gb[0][2] == turn && gb[2][2] == turn && gb[4][2] == turn
+				|| gb[0][4] == turn && gb[2][4] == turn && gb[4][4] == turn
+				|| gb[0][0] == turn && gb[2][2] == turn && gb[4][4] == turn
+				|| gb[0][4] == turn && gb[2][2] == turn && gb[4][0] == turn) {
 			return true;
 		}
 		return false;

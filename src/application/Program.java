@@ -29,10 +29,12 @@ public class Program {
 			//TODO fix the bug that its ever the same player
 			while(!isGameOver) {
 				printGameBoard(gameBoard);
-				System.out.println(turn + " select a position: (1-9)");
+				System.out.println("Player " + turn);
+				System.out.println("select a position: (1-9)");
 				position = sc.nextInt();
 				position(position, gameBoard, turn);
 				printGameBoard(gameBoard);
+				turn = changeTurn(turn);
 				System.out.println("==========");
 				isGameOver = isGameOver(turn, gameBoard);
 			}
@@ -49,15 +51,15 @@ public class Program {
 		}
 	}
 	
-	public static void changeTurn(char turn) {
+	public static char changeTurn(char turn) {
 		if (turn == 'X') {
-			turn = 'O';
+			return 'O';
 		} else {
 			turn = 'X';
+			return 'X';
 		}
-		System.out.println("Turn: " + turn);
 	}
-	//TODO finish this method
+	
 	//Verify if game is over or not
 	public static boolean isGameOver(char turn, char[][] gb) {
 		if (gb[0][0] == turn && gb[0][2] == turn && gb[0][4] == turn
@@ -77,39 +79,39 @@ public class Program {
 		switch(pos) {
 		case 1:
 			gb[0][0] = turn;
-			changeTurn(turn);
+//			changeTurn(turn);
 		break;
 		case 2:
 			gb[0][2] = turn;
-			changeTurn(turn);
+//			changeTurn(turn);
 		break;
 		case 3:
 			gb[0][4] = turn;
-			changeTurn(turn);
+//			changeTurn(turn);
 		break;
 		case 4:
 			gb[2][0] = turn;
-			changeTurn(turn);
+//			changeTurn(turn);
 		break;
 		case 5:
 			gb[2][2] = turn;
-			changeTurn(turn);
+//			changeTurn(turn);
 		break;
 		case 6:
 			gb[2][4] = turn;
-			changeTurn(turn);
+//			changeTurn(turn);
 		break;
 		case 7:
 			gb[4][0] = turn;
-			changeTurn(turn);
+//			changeTurn(turn);
 		break;
 		case 8:
 			gb[4][2] = turn;
-			changeTurn(turn);
+//			changeTurn(turn);
 		break;
 		case 9:
 			gb[4][4] = turn;
-			changeTurn(turn);
+//			changeTurn(turn);
 		break;
 		}
 	}

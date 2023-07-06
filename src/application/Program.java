@@ -35,6 +35,9 @@ public class Program {
 				position(position, gameBoard, turn);
 				printGameBoard(gameBoard);
 				isGameOver = isGameOver(turn, gameBoard);
+				if (isGameOver) {
+					System.out.println("Player: '" + turn + "' won this round!");
+				}
 				turn = changeTurn(turn);
 				System.out.println("==========");
 			}
@@ -74,6 +77,7 @@ public class Program {
 		}
 		return false;
 	}
+	
 
 	public static void position(int pos, char[][] gb, char turn) {
 		switch(pos) {

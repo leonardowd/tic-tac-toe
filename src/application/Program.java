@@ -25,18 +25,18 @@ public class Program {
 		//Game
 			System.out.print("Select who will play first: ");
 			turn = sc.next().charAt(0);
+			printGameBoard(gameBoard);
+			System.out.println();
 			
-			//TODO fix the bug that its ever the same player
 			while(!isGameOver) {
-				printGameBoard(gameBoard);
 				System.out.println("Player " + turn);
 				System.out.println("select a position: (1-9)");
 				position = sc.nextInt();
 				position(position, gameBoard, turn);
 				printGameBoard(gameBoard);
+				isGameOver = isGameOver(turn, gameBoard);
 				turn = changeTurn(turn);
 				System.out.println("==========");
-				isGameOver = isGameOver(turn, gameBoard);
 			}
 			
 			sc.close();
@@ -79,39 +79,30 @@ public class Program {
 		switch(pos) {
 		case 1:
 			gb[0][0] = turn;
-//			changeTurn(turn);
 		break;
 		case 2:
 			gb[0][2] = turn;
-//			changeTurn(turn);
 		break;
 		case 3:
 			gb[0][4] = turn;
-//			changeTurn(turn);
 		break;
 		case 4:
 			gb[2][0] = turn;
-//			changeTurn(turn);
 		break;
 		case 5:
 			gb[2][2] = turn;
-//			changeTurn(turn);
 		break;
 		case 6:
 			gb[2][4] = turn;
-//			changeTurn(turn);
 		break;
 		case 7:
 			gb[4][0] = turn;
-//			changeTurn(turn);
 		break;
 		case 8:
 			gb[4][2] = turn;
-//			changeTurn(turn);
 		break;
 		case 9:
 			gb[4][4] = turn;
-//			changeTurn(turn);
 		break;
 		}
 	}

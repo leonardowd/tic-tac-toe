@@ -27,7 +27,7 @@ public class Program {
 			turn = sc.next().charAt(0);
 			printGameBoard(gameBoard);
 			System.out.println();
-			
+			//TODO fix the bug that the actually player subscribe the older player
 			while(!isGameOver) {
 				System.out.println("Player " + turn);
 				System.out.println("select a position: (1-9)");

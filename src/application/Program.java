@@ -27,7 +27,7 @@ public class Program {
 			turn = sc.next().charAt(0);
 			printGameBoard(gameBoard);
 			System.out.println();
-			//TODO fix the bug that the actually player subscribe the older player
+			//TODO fix the bug that, if there's an invalid position, the game continue with the other player
 			while(!isGameOver) {
 				System.out.println("Player " + turn);
 				System.out.println("select a position: (1-9)");
@@ -78,36 +78,42 @@ public class Program {
 		return false;
 	}
 	
+	
+	
 
 	public static void position(int pos, char[][] gb, char turn) {
 		switch(pos) {
-		case 1:
-			gb[0][0] = turn;
-		break;
-		case 2:
-			gb[0][2] = turn;
-		break;
-		case 3:
-			gb[0][4] = turn;
-		break;
-		case 4:
-			gb[2][0] = turn;
-		break;
-		case 5:
-			gb[2][2] = turn;
-		break;
-		case 6:
-			gb[2][4] = turn;
-		break;
-		case 7:
-			gb[4][0] = turn;
-		break;
-		case 8:
-			gb[4][2] = turn;
-		break;
-		case 9:
-			gb[4][4] = turn;
-		break;
+			case 1:
+				if (gb[0][0] == 'X' || gb[0][0] == 'O') {
+					System.out.println("Position not available");
+				} else {
+					gb[0][0] = turn;				
+				}
+			break;
+			case 2:
+				gb[0][2] = turn;
+			break;
+			case 3:
+				gb[0][4] = turn;
+			break;
+			case 4:
+				gb[2][0] = turn;
+			break;
+			case 5:
+				gb[2][2] = turn;
+			break;
+			case 6:
+				gb[2][4] = turn;
+			break;
+			case 7:
+				gb[4][0] = turn;
+			break;
+			case 8:
+				gb[4][2] = turn;
+			break;
+			case 9:
+				gb[4][4] = turn;
+			break;
 		}
 	}
 }

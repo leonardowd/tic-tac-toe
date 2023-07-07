@@ -10,6 +10,10 @@ public class Program {
 
 		char turn;
 		int position;
+		char p1 = 'X';
+		char p2 = 'O';
+		int p1Points = 0;
+		int p2Points = 0;
 		Boolean isGameOver = false;
 		
 		//gameBoard' Design
@@ -23,6 +27,10 @@ public class Program {
 			
 
 		//Game
+			System.out.println("==================");
+			System.out.println("Player 1: 'X'");
+			System.out.println("Player 2: 'O'");
+			System.out.println("==================");
 			System.out.print("Select who will play first: ");
 			turn = sc.next().charAt(0);
 			printGameBoard(gameBoard);
@@ -37,6 +45,16 @@ public class Program {
 				isGameOver = isGameOver(turn, gameBoard);
 				if (isGameOver) {
 					System.out.println("Player: '" + turn + "' won this round!");
+					if (turn == 'X') {
+						p1Points += 1;
+					} else {
+						p2Points += 1;
+					}
+					System.out.println("==================");
+					System.out.println("Player 1 score: " + p1Points);
+					System.out.println("Player 2 score: " + p2Points);
+					System.out.println("==================");
+					//TODO make a option to continue playing without erase the score
 				}
 				turn = changeTurn(turn);
 				System.out.println("==========");
@@ -76,13 +94,11 @@ public class Program {
 			return true;
 		}
 		return false;
-	}
-	
-	
-	
+	}	
 
 	public static void position(int pos, char[][] gb, char turn) {
 		switch(pos) {
+		//TODO finish this méthod after fix the bug mentioned below
 			case 1:
 				if (gb[0][0] == 'X' || gb[0][0] == 'O') {
 					System.out.println("Position not available");

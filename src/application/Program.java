@@ -45,6 +45,7 @@ public class Program {
 				position = sc.nextInt();
 				position(position, gameBoard, turn);
 				printGameBoard(gameBoard);
+				isDraw(gameBoard);
 				isGameOver = isGameOver(turn, gameBoard);
 				if (isGameOver) {
 					System.out.println("Player: '" + turn + "' won this round!");
@@ -121,6 +122,23 @@ public class Program {
 		}
 		return false;
 	}	
+	
+	//TODO fix the bug that everytime 'isDraw' is true
+	public static boolean isDraw(char [][] gb) {
+				if (gb[0][0] != ' ' && gb[0][2] != ' ' && gb[0][4] != ' '
+						|| gb[2][0] != ' ' && gb[2][2] != ' ' && gb[2][4] != ' '
+						|| gb[4][0] != ' ' && gb[4][2] != ' ' && gb[4][4] != ' '
+						|| gb[0][0] != ' ' && gb[2][0] != ' ' && gb[4][0] != ' '
+						|| gb[0][2] != ' ' && gb[2][2] != ' ' && gb[4][2] != ' '
+						|| gb[0][4] != ' ' && gb[2][4] != ' ' && gb[4][4] != ' '
+						|| gb[0][0] != ' ' && gb[2][2] != ' ' && gb[4][4] != ' '
+						|| gb[0][4] != ' ' && gb[2][2] != ' ' && gb[4][0] != ' ') {
+							
+						System.out.println("It's a draw!!");
+						return true;
+					} 
+						return false;
+				} 
 
 	//print the board's position depending on player's turn
 	public static void position(int pos, char[][] gb, char turn) {

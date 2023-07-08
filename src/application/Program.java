@@ -10,11 +10,10 @@ public class Program {
 
 		char turn;
 		int position;
-		char p1 = 'X';
-		char p2 = 'O';
 		int p1Points = 0;
 		int p2Points = 0;
 		Boolean isGameOver = false;
+		Boolean endGame = false;
 		
 		//gameBoard' Design
 		char[][] gameBoard = {
@@ -25,16 +24,20 @@ public class Program {
 				{' ', '|', ' ', '|', ' '}
 		};
 			
-
-		//Game
+		//TODO make the game reset if it's a draw when all the board it's full
+		//Game start
+		do {
 			System.out.println("==================");
 			System.out.println("Player 1: 'X'");
 			System.out.println("Player 2: 'O'");
 			System.out.println("==================");
 			System.out.print("Select who will play first: ");
+			
 			turn = sc.next().charAt(0);
+			turn = Character.toUpperCase(turn);
 			printGameBoard(gameBoard);
 			System.out.println();
+			
 			//TODO fix the bug that, if there's an invalid position, the game continue with the other player
 			while(!isGameOver) {
 				System.out.println("Player " + turn);
@@ -54,11 +57,34 @@ public class Program {
 					System.out.println("Player 1 score: " + p1Points);
 					System.out.println("Player 2 score: " + p2Points);
 					System.out.println("==================");
-					//TODO make a option to continue playing without erase the score
 				}
 				turn = changeTurn(turn);
 				System.out.println("==========");
 			}
+			
+			//check if players want to end the game
+			System.out.println("Do you want to end the game? (Y/N) ");
+			char eGame = sc.next().charAt(0);
+			eGame = Character.toUpperCase(eGame);
+			
+			if (eGame == 'Y') {
+				System.out.println("Player 1 (" + p1Points + ")"+ " VS (" + p2Points + ") Player 2.");
+				System.out.println("------------------------------------");
+				if (p1Points > p2Points) {
+					System.out.println("Player 1 won the game!!");
+				} else if (p1Points == p2Points) {
+					System.out.println("It's a DRAW!!");
+				} else {
+					System.out.println("Player 2 won the game!!");
+				}
+				
+				endGame = true;
+			} else {
+				isGameOver = false;
+				clearBoard(gameBoard);
+			}
+			
+		} while (!endGame);
 			
 			sc.close();
 	}
@@ -96,6 +122,7 @@ public class Program {
 		return false;
 	}	
 
+	//print the board's position depending on player's turn
 	public static void position(int pos, char[][] gb, char turn) {
 		switch(pos) {
 		//TODO finish this méthod after fix the bug mentioned below
@@ -132,4 +159,17 @@ public class Program {
 			break;
 		}
 	}
+	
+	public static void clearBoard(char[][] gb) {
+		gb[0][0] = ' ';
+		gb[0][2] = ' ';
+		gb[0][4] = ' ';
+		gb[2][0] = ' ';
+		gb[2][2] = ' ';
+		gb[2][4] = ' ';
+		gb[4][0] = ' ';
+		gb[4][2] = ' ';
+		gb[4][4] = ' ';
+	}
+	
 }

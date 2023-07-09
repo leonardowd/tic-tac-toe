@@ -12,8 +12,9 @@ public class Program {
 		int position;
 		int p1Points = 0;
 		int p2Points = 0;
-		Boolean isGameOver = false;
-		Boolean endGame = false;
+		boolean isAvailable = true;
+		boolean isGameOver = false;
+		boolean endGame = false;
 		
 		//gameBoard' Design
 		char[][] gameBoard = {
@@ -39,17 +40,23 @@ public class Program {
 			printGameBoard(gameBoard);
 			System.out.println();
 			
-			//TODO fix the bug that, if there's an invalid position, the game continue with the other player
+			//TODO fix the bug that user can select other player until X or O
 			while(!isGameOver) {
 				System.out.println("Player " + turn);
 				System.out.println("select a position: (1-9)");
 				position = sc.nextInt();
-				position(position, gameBoard, turn);
+				isAvailable = position(position, gameBoard, turn, isAvailable);
+				while (!isAvailable) {
+					System.out.print("Type a new position: (1-9) ");
+					position = sc.nextInt();
+					isAvailable = position(position, gameBoard, turn, isAvailable);
+				}
 				printGameBoard(gameBoard);
 				System.out.println(); //just to add a breakLine
 				isGameOver = isGameOver(turn, gameBoard);
 				if (isGameOver) {
 					System.out.println("Player: '" + turn + "' won this round!");
+					System.out.println();
 					if (turn == 'X') {
 						p1Points += 1;
 					} else {
@@ -144,41 +151,94 @@ public class Program {
 				} 
 
 	//print the board's position depending on player's turn
-	public static void position(int pos, char[][] gb, char turn) {
+	public static boolean position(int pos, char[][] gb, char turn, boolean isAvailable) {
 		switch(pos) {
-		//TODO finish this method after fix the bug mentioned below
 			case 1:
 				if (gb[0][0] == 'X' || gb[0][0] == 'O') {
 					System.out.println("Position not available");
+					isAvailable = false;
 				} else {
-					gb[0][0] = turn;				
+					gb[0][0] = turn;	
+					isAvailable = true;
 				}
 			break;
 			case 2:
-				gb[0][2] = turn;
+				if (gb[0][2] == 'X' || gb[0][2] == 'O') {
+					System.out.println("Position not available");
+					isAvailable = false;
+				} else {
+					gb[0][2] = turn;	
+					isAvailable = true;
+				}
 			break;
 			case 3:
-				gb[0][4] = turn;
+				if (gb[0][4] == 'X' || gb[0][4] == 'O') {
+					System.out.println("Position not available");
+					isAvailable = false;
+				} else {
+					gb[0][4] = turn;	
+					isAvailable = true;
+				}
 			break;
 			case 4:
-				gb[2][0] = turn;
+				if (gb[2][0] == 'X' || gb[2][0] == 'O') {
+					System.out.println("Position not available");
+					isAvailable = false;
+				} else {
+					gb[2][0] = turn;	
+					isAvailable = true;
+				}
 			break;
 			case 5:
-				gb[2][2] = turn;
+				if (gb[2][2] == 'X' || gb[2][2] == 'O') {
+					System.out.println("Position not available");
+					isAvailable = false;
+				} else {
+					gb[2][2] = turn;	
+					isAvailable = true;
+				}
 			break;
 			case 6:
-				gb[2][4] = turn;
+				if (gb[2][4] == 'X' || gb[2][4] == 'O') {
+					System.out.println("Position not available");
+					isAvailable = false;
+				} else {
+					gb[2][4] = turn;	
+					isAvailable = true;
+				}
 			break;
 			case 7:
-				gb[4][0] = turn;
+				if (gb[4][0] == 'X' || gb[4][0] == 'O') {
+					System.out.println("Position not available");
+					isAvailable = false;
+				} else {
+					gb[4][0] = turn;	
+					isAvailable = true;
+				}
 			break;
 			case 8:
-				gb[4][2] = turn;
+				if (gb[4][2] == 'X' || gb[4][2] == 'O') {
+					System.out.println("Position not available");
+					isAvailable = false;
+				} else {
+					gb[4][2] = turn;	
+					isAvailable = true;
+				}
 			break;
 			case 9:
-				gb[4][4] = turn;
+				if (gb[4][4] == 'X' || gb[4][4] == 'O') {
+					System.out.println("Position not available");
+					isAvailable = false;
+				} else {
+					gb[4][4] = turn;	
+					isAvailable = true;
+				}
 			break;
 		}
+		if (!isAvailable) {
+			return false;
+		}
+		return true;
 	}
 	
 	public static void clearBoard(char[][] gb) {

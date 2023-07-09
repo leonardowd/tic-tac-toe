@@ -33,6 +33,8 @@ public class Program {
 			System.out.print("Select who will play first: (X/O) ");
 			turn = sc.next().charAt(0);
 			turn = Character.toUpperCase(turn);
+
+			addLines();
 			
 			printGameBoard(gameBoard);
 			System.out.println();
@@ -44,6 +46,7 @@ public class Program {
 				position = sc.nextInt();
 				position(position, gameBoard, turn);
 				printGameBoard(gameBoard);
+				System.out.println(); //just to add a breakLine
 				isGameOver = isGameOver(turn, gameBoard);
 				if (isGameOver) {
 					System.out.println("Player: '" + turn + "' won this round!");
@@ -62,6 +65,7 @@ public class Program {
 					System.out.println("Press anykey to play again");
 					String anyKey = sc.next();
 					clearBoard(gameBoard);
+					printGameBoard(gameBoard);
 				}
 				
 				turn = changeTurn(turn);
@@ -187,6 +191,25 @@ public class Program {
 		gb[4][0] = ' ';
 		gb[4][2] = ' ';
 		gb[4][4] = ' ';
+	}
+	
+	//Method to add lines to better see the gameboard after a movement
+	public static void addLines() {
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
 	}
 	
 }

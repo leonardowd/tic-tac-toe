@@ -24,17 +24,16 @@ public class Program {
 				{' ', '|', ' ', '|', ' '}
 		};
 			
-		//TODO make the game reset if it's a draw when all the board it's full
-		//Game start
+		//GAME STARTS
 		do {
 			System.out.println("==================");
 			System.out.println("Player 1: 'X'");
 			System.out.println("Player 2: 'O'");
 			System.out.println("==================");
-			System.out.print("Select who will play first: ");
-			
+			System.out.print("Select who will play first: (X/O) ");
 			turn = sc.next().charAt(0);
 			turn = Character.toUpperCase(turn);
+			
 			printGameBoard(gameBoard);
 			System.out.println();
 			
@@ -45,7 +44,6 @@ public class Program {
 				position = sc.nextInt();
 				position(position, gameBoard, turn);
 				printGameBoard(gameBoard);
-				isDraw(gameBoard);
 				isGameOver = isGameOver(turn, gameBoard);
 				if (isGameOver) {
 					System.out.println("Player: '" + turn + "' won this round!");
@@ -59,8 +57,14 @@ public class Program {
 					System.out.println("Player 2 score: " + p2Points);
 					System.out.println("==================");
 				}
+				
+				if (isDraw(gameBoard)) {
+					System.out.println("Press anykey to play again");
+					String anyKey = sc.next();
+					clearBoard(gameBoard);
+				}
+				
 				turn = changeTurn(turn);
-				System.out.println("==========");
 			}
 			
 			//check if players want to end the game
@@ -86,6 +90,7 @@ public class Program {
 			}
 			
 		} while (!endGame);
+		//GAME ENDS
 			
 			sc.close();
 	}
@@ -128,7 +133,7 @@ public class Program {
 					&& gb[2][0] != ' ' && gb[2][2] != ' ' && gb[2][4] != ' '
 					&& gb[4][0] != ' ' && gb[4][2] != ' ' && gb[4][4] != ' ') {
 							
-						System.out.println("It's a draw!!");
+						System.out.println("IT'S A DRAW!!");
 						return true;
 					} 
 						return false;
@@ -137,7 +142,7 @@ public class Program {
 	//print the board's position depending on player's turn
 	public static void position(int pos, char[][] gb, char turn) {
 		switch(pos) {
-		//TODO finish this méthod after fix the bug mentioned below
+		//TODO finish this method after fix the bug mentioned below
 			case 1:
 				if (gb[0][0] == 'X' || gb[0][0] == 'O') {
 					System.out.println("Position not available");

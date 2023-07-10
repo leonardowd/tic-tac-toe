@@ -8,11 +8,12 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 
-		char turn;
+		char turn = 'X';
 		int position;
 		int p1Points = 0;
 		int p2Points = 0;
 		boolean isAvailable = true;
+		boolean validPlayer = false;
 		boolean isGameOver = false;
 		boolean endGame = false;
 		
@@ -31,16 +32,24 @@ public class Program {
 			System.out.println("Player 1: 'X'");
 			System.out.println("Player 2: 'O'");
 			System.out.println("==================");
-			System.out.print("Select who will play first: (X/O) ");
-			turn = sc.next().charAt(0);
-			turn = Character.toUpperCase(turn);
+			while(!validPlayer) {
+				System.out.print("Select who will play first: (X/O) ");
+				turn = sc.next().charAt(0);
+				turn = Character.toUpperCase(turn);
+				
+				if (turn != 'X' && turn != 'O') {
+					System.out.println("Invalid Player...");
+					validPlayer = false;
+				} else {
+					validPlayer = true;
+				}
+			}
 
 			addLines();
 			
 			printGameBoard(gameBoard);
 			System.out.println();
 			
-			//TODO fix the bug that user can select other player until X or O
 			while(!isGameOver) {
 				System.out.println("Player " + turn);
 				System.out.println("select a position: (1-9)");
@@ -69,7 +78,7 @@ public class Program {
 				}
 				
 				if (isDraw(gameBoard)) {
-					System.out.println("Press anykey to play again");
+					System.out.println("Type C to continue");
 					String anyKey = sc.next();
 					clearBoard(gameBoard);
 					printGameBoard(gameBoard);
@@ -253,7 +262,7 @@ public class Program {
 		gb[4][4] = ' ';
 	}
 	
-	//Method to add lines to better see the gameboard after a movement
+	//Method to add lines to better see the gameboard after round ends
 	public static void addLines() {
 		System.out.println();
 		System.out.println();

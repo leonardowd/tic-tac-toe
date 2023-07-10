@@ -15,5 +15,5 @@ some concepts in Java and programming logic.
 2. open the directory where you downloaded the project
 3. press ALT + D to focus the directory
 4. type CMD to open the command line in the project's folder
-5. type **java -jar tic-tac-toe.jar
+5. type **java -jar tic-tac-toe.jar**
 6. press ENTER, and the game will start

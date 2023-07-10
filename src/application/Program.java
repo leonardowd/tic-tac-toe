@@ -45,8 +45,6 @@ public class Program {
 				}
 			}
 
-			addLines();
-			
 			printGameBoard(gameBoard);
 			System.out.println();
 			
@@ -260,25 +258,6 @@ public class Program {
 		gb[4][0] = ' ';
 		gb[4][2] = ' ';
 		gb[4][4] = ' ';
-	}
-	
-	//Method to add lines to better see the gameboard after round ends
-	public static void addLines() {
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
 	}
 	
 }

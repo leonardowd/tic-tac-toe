@@ -20,5 +20,6 @@ some concepts in Java and programming logic.
 4. type CMD to open the command line in the project's folder
 5. type **java -jar tic-tac-toe.jar**
 	![example](https://github.com/leonardowd/tic-tac-toe/blob/main/media/commandLine.png?raw=true)
+	
 6. press ENTER, and the game will start
 7. If you want force stop the game, press CTRL + C

@@ -5,7 +5,8 @@ some concepts in Java and programming logic.
 
 ## Developed by
 
-*Leonardo Vinicius Galvao da Silva *email: leonardoviniciuswd@gmail.com
+*Leonardo Vinicius Galvao da Silva
+*email: leonardoviniciuswd@gmail.com
 
 ## Actual version 1.0
 

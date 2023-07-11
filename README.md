@@ -3,6 +3,8 @@
 This is a game developed with Java, to run in the command line. It's a project to study 
 some concepts in Java and programming logic.
 
+![The game](https://github.com/leonardowd/tic-tac-toe/blob/main/media/gameExp.png?raw=true)
+
 ## Developed by
 
 * Leonardo Vinicius Galvao da Silva
@@ -17,6 +19,6 @@ some concepts in Java and programming logic.
 3. press ALT + D to focus the directory [the second method in this video tutorial](https://www.youtube.com/watch?v=bgSSJQolR0E)
 4. type CMD to open the command line in the project's folder
 5. type **java -jar tic-tac-toe.jar**
+	![example](https://github.com/leonardowd/tic-tac-toe/blob/main/media/commandLine.png?raw=true)
 6. press ENTER, and the game will start
 7. If you want force stop the game, press CTRL + C
-   

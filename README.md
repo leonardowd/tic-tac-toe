@@ -23,3 +23,6 @@ some concepts in Java and programming logic.
 	![example](https://github.com/leonardowd/tic-tac-toe/blob/main/media/commandLine.png?raw=true)
 9. press ENTER, and the game will start
 10. If you want force stop the game, press CTRL + C
+
+## Game Example:
+![Game Example](https://github.com/leonardowd/tic-tac-toe/blob/main/media/gameDemo.png?raw=true)
